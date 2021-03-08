@@ -1,24 +1,67 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テーブル設計
 
-Things you may want to cover:
+### * = null: false
 
-* Ruby version
+## users テーブル
 
-* System dependencies
+| Column          | Type   | Options |
+| --------------- | ------ | --------|
+| nickname        | string | *       |
+| last_name       | string | *       |
+| first_name      | string | *       |
+| kana_last_name  | string | *       |
+| kana_first_name | string | *       |
 
-* Configuration
+### Association
 
-* Database creation
+- has_many :items
+- has_many :buys
 
-* Database initialization
 
-* How to run the test suite
+## items テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column   | Type    | Options           |
+| -------- | ------- | ------------------|
+| name     | string  | *, maxlength: 39  |
+| text     | text    | *, maxlength: 999 |
+| category | integer | *                 |
+| status   | integer | *                 |
 
-* Deployment instructions
+### Association
 
-* ...
+- belongs_to : user
+- has_one    :buy
+- has_one    :address
+
+## buys テーブル
+
+| Column          | Type    | Options               | 
+| --------------- | --------| ----------------------|
+| pay             | integer | *                     |
+| delivery_pref   | integer | *                     |
+| delivery_date   | integer | *                     |
+| price           | integer | *, range 300..9999999 |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+## addresses テーブル
+
+| Column     | Type    | Options |
+| ---------- | --------| --------|
+| telephone  | string  | *       |
+| post_num   | string  | *       |
+| prefecture | integer | *       |
+| city       | string  | *       |
+| house_num  | string  | *       |
+| building   | string  |         |
+
+### Association
+
+- belongs_to :room
+- belongs_to :user
