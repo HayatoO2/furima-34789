@@ -2,20 +2,19 @@
 
 # テーブル設計
 
-### * = null: false
 
 ## users テーブル
 
-| Column            | Type    | Options |
-| ----------------- | ------- | --------|
-| nickname          | string  | *       |
-| last_name         | string  | *       |
-| first_name        | string  | *       |
-| kana_last_name    | string  | *       |
-| kana_first_name   | string  | *       |
-| email             | string  | *       |
-| password          | string  | *       |
-| birthday          | integer | *       |
+| Column             | Type    | Options     |
+| ------------------ | ------- | ------------|
+| nickname           | string  | null: false |
+| last_name          | string  | null: false |
+| first_name         | string  | null: false |
+| kana_last_name     | string  | null: false |
+| kana_first_name    | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| birthday           | date    | null: false |
 
 
 ### Association
@@ -26,16 +25,17 @@
 
 ## items テーブル
 
-| Column           | Type    | Options               |
-| ---------------- | ------- | ----------------------|
-| name             | string  | *, maxlength: 39      |
-| text             | text    | *, maxlength: 999     |
-| category_id      | integer | *                     |
-| status_id        | integer | *                     |
-| pay_id           | integer | *                     |
-| delivery_pref_id | integer | *                     |
-| delivery_date_id | integer | *                     |
-| price            | integer | *, range 300..9999999 |
+| Column           | Type       | Options                           |
+| ---------------- | ---------- | ----------------------------------|
+| name             | string     |  null: false  maxlength: 39       |
+| text             | text       |  null: false , maxlength: 999     |
+| category_id      | integer    |  null: false                      |
+| status_id        | integer    |  null: false                      |
+| pay_id           | integer    |  null: false                      |
+| prefecture_id    | integer    |  null: false                      |
+| delivery_date_id | integer    |  null: false                      |
+| price            | integer    |  null: false , range 300..9999999 |
+| user             | references |  foreign_key: true                |
 
 ### Association
 
@@ -46,10 +46,10 @@
 
 ## buys テーブル
 
-| Column  | Type       | Options           | 
-| ------- | -----------| ------------------|
-| user_id | references | foreign_key: true |
-| item_id | references | foreign_key: true |
+| Column | Type       | Options           | 
+| -------| -----------| ------------------|
+| user   | references | foreign_key: true |
+| item   | references | foreign_key: true |
 
 ### Association
 
@@ -59,15 +59,15 @@
 
 ## addresses テーブル
 
-| Column        | Type       | Options             |
-| ------------- | -----------| --------------------|
-| telephone     | string     | *                   |
-| post_num      | string     | *                   |
-| prefecture_id | integer    | *                   |
-| city          | string     | *                   |
-| house_num     | string     | *                   |
-| building      | string     |                     |
-| buy_id        | references | *,foreign_key: true |
+| Column        | Type       | Options                         |
+| ------------- | -----------| --------------------------------|
+| telephone     | string     |  null: false                    |
+| post_num      | string     |  null: false                    |
+| prefecture_id | integer    |  null: false                    |
+| city          | string     |  null: false                    |
+| house_num     | string     |  null: false                    |
+| building      | string     |                                 |
+| buy_id        | references |  null: false ,foreign_key: true |
 
 ### Association
 
