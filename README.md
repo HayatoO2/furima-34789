@@ -5,16 +5,16 @@
 
 ## users テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ------------|
-| nickname           | string  | null: false |
-| last_name          | string  | null: false |
-| first_name         | string  | null: false |
-| kana_last_name     | string  | null: false |
-| kana_first_name    | string  | null: false |
-| email              | string  | null: false |
-| encrypted_password | string  | null: false |
-| birthday           | date    | null: false |
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| nickname           | string  | null: false               |
+| last_name          | string  | null: false               |
+| first_name         | string  | null: false               |
+| kana_last_name     | string  | null: false               |
+| kana_first_name    | string  | null: false               |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
+| birthday           | date    | null: false               |
 
 
 ### Association
@@ -25,17 +25,17 @@
 
 ## items テーブル
 
-| Column           | Type       | Options                           |
-| ---------------- | ---------- | ----------------------------------|
-| name             | string     |  null: false  maxlength: 39       |
-| text             | text       |  null: false , maxlength: 999     |
-| category_id      | integer    |  null: false                      |
-| status_id        | integer    |  null: false                      |
-| pay_id           | integer    |  null: false                      |
-| prefecture_id    | integer    |  null: false                      |
-| delivery_date_id | integer    |  null: false                      |
-| price            | integer    |  null: false , range 300..9999999 |
-| user             | references |  foreign_key: true                |
+| Column           | Type       | Options            |
+| ---------------- | ---------- | -------------------|
+| name             | string     |  null: false       |
+| text             | text       |  null: false       |
+| category_id      | integer    |  null: false       |
+| status_id        | integer    |  null: false       |
+| pay_id           | integer    |  null: false       |
+| prefecture_id    | integer    |  null: false       |
+| delivery_date_id | integer    |  null: false       |
+| price            | integer    |  null: false       |
+| user             | references |  foreign_key: true |
 
 ### Association
 
@@ -67,7 +67,7 @@
 | city          | string     |  null: false                    |
 | house_num     | string     |  null: false                    |
 | building      | string     |                                 |
-| buy_id        | references |  null: false ,foreign_key: true |
+| buy           | references |  null: false ,foreign_key: true |
 
 ### Association
 
