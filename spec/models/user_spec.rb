@@ -29,5 +29,9 @@ RSpec.describe User, type: :model do
       @user.email = @user.email.gsub(/@/,"a")
       error_check("Email is invalid")
     end
+    it 'パスワードが空だと登録できない' do
+      @user.password = ''
+      error_check("Password can't be blank")
+    end
   end
 end
