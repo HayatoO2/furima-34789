@@ -54,5 +54,11 @@ RSpec.describe User, type: :model do
       @user.password_confirmation = @user.password
       error_check("Password is invalid")
     end
+    
+    it 'パスワードが半角英字のみの場合は登録できない' do
+      @user.password = "abcdef"
+      @user.password_confirmation = @user.password
+      error_check("Password is invalid")
+    end
   end
 end
