@@ -50,81 +50,82 @@ RSpec.describe User, type: :model do
     end
 
     it 'パスワードが半角数字のみの場合は登録できない' do
-      @user.password = 123456
+      @user.password = 123_456
       @user.password_confirmation = @user.password
-      error_check("Password is invalid")
+      error_check('Password is invalid')
     end
-    
+
     it 'パスワードが半角英字のみの場合は登録できない' do
-      @user.password = "abcdef"
+      @user.password = 'abcdef'
       @user.password_confirmation = @user.password
-      error_check("Password is invalid")
+      error_check('Password is invalid')
     end
 
     it 'パスワードが全角の場合は登録できない' do
-      @user.password = "１２３ＡＢＣ"
+      @user.password = '１２３ＡＢＣ'
       @user.password_confirmation = @user.password
-      error_check("Password is invalid")
+      error_check('Password is invalid')
     end
 
     it 'last_nameは空では登録できない' do
-      @user.last_name = ""
+      @user.last_name = ''
       error_check("Last name can't be blank")
     end
-    
+
     it 'first_nameは空では登録できない' do
-      @user.first_name = ""
+      @user.first_name = ''
       error_check("First name can't be blank")
     end
 
     it 'last_nameは全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
-      
-     array = ['1','３','a', 'Ａ']
+      array = %w[1 ３ a Ａ]
 
-     array.each do |value|
-       @user.last_name += value
-       error_check('Last name is invalid')
-     end
-   end
+      array.each do |value|
+        @user.last_name += value
+        error_check('Last name is invalid')
+      end
+    end
 
     it 'first_nameは全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
-      
-     array = ['1','３','a', 'Ａ']
+      array = %w[1 ３ a Ａ]
 
-     array.each do |value|
-       @user.first_name += value
-       error_check('First name is invalid')
-     end
-   end
-
-   it 'kana_last_nameは空では登録できない' do
-    @user.kana_last_name = ''
-    error_check("Kana last name can't be blank")
-   end
-
-   it 'kana_first_nameは空では登録できない' do
-    @user.kana_first_name = ''
-    error_check("Kana first name can't be blank")
-   end
-
-   it 'kana_last_nameは全角（カタカナ）でなければ登録できない' do
-    
-    array = ['山', '1','３','a', 'Ａ','あ']
-
-    array.each do |value|
-      @user.kana_last_name += value
-      error_check('Kana last name is invalid')
+      array.each do |value|
+        @user.first_name += value
+        error_check('First name is invalid')
+      end
     end
-   end
 
-   it 'kana_first_nameは全角（カタカナ）でなければ登録できない' do
-    
-    array = ['山', '1','３','a', 'Ａ','あ']
-
-    array.each do |value|
-      @user.kana_first_name += value
-      error_check('Kana first name is invalid')
+    it 'kana_last_nameは空では登録できない' do
+      @user.kana_last_name = ''
+      error_check("Kana last name can't be blank")
     end
-   end
+
+    it 'kana_first_nameは空では登録できない' do
+      @user.kana_first_name = ''
+      error_check("Kana first name can't be blank")
+    end
+
+    it 'kana_last_nameは全角（カタカナ）でなければ登録できない' do
+      array = %w[山 1 ３ a Ａ あ]
+
+      array.each do |value|
+        @user.kana_last_name += value
+        error_check('Kana last name is invalid')
+      end
+    end
+
+    it 'kana_first_nameは全角（カタカナ）でなければ登録できない' do
+      array = %w[山 1 ３ a Ａ あ]
+
+      array.each do |value|
+        @user.kana_first_name += value
+        error_check('Kana first name is invalid')
+      end
+    end
+
+    it 'birthdayは空では登録できない' do
+      @user.birthday = ''
+      error_check("Birthday can't be blank")
+    end
   end
 end
