@@ -5,6 +5,7 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
 
     def error_check(str)
+      @user.valid?
       expect(@user.errors.full_messages).to include(str)
     end
   end
@@ -16,7 +17,6 @@ RSpec.describe User, type: :model do
     end
     it 'メールアドレスは必須' do
       @user.email = ''
-      @user.valid?
       error_check("Email can't be blank")
     end
     it 'メールアドレスに一意性あり' do
@@ -24,6 +24,10 @@ RSpec.describe User, type: :model do
       @user.email = user.email
       @user.valid?
       error_check("Email has already been taken")
+    end
+    it 'メールアドレスに＠がないと登録できない' do
+      @user.email = @user.email.gsub(/@/,"a")
+      error_check("Email is invalid")
     end
   end
 end
