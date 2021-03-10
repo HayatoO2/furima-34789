@@ -106,5 +106,15 @@ RSpec.describe User, type: :model do
     @user.kana_first_name = ''
     error_check("Kana first name can't be blank")
    end
+
+   it 'kana_last_nameは全角（カタカナ）でなければ登録できない' do
+    
+    array = ['山', '1','３','a', 'Ａ','あ']
+
+    array.each do |value|
+      @user.kana_last_name += value
+      error_check('Kana last name is invalid')
+    end
+   end
   end
 end
