@@ -66,5 +66,10 @@ RSpec.describe User, type: :model do
       @user.password_confirmation = @user.password
       error_check("Password is invalid")
     end
+
+    it 'last_nameは空では登録できない' do
+      @user.last_name = ""
+      error_check("Last name can't be blank")
+    end
   end
 end
