@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     validates :price
   end
 
-  with_options numericalit: {other_than: 1}, allow_blank: true do
+  with_options numericality: {other_than: 1}, allow_blank: true do
     validates :category_id
     validates :status_id
     validates :pay_id
@@ -24,7 +24,7 @@ class Item < ApplicationRecord
 
   validates :price, allow_blank: true, numericality:  { greater_than_or_equal_to: 300 }, numericality: { less_than_or_equal_to: 9999999 }
 
-  has_one_atacched :image
+  has_one_attached :image
 
 
 
