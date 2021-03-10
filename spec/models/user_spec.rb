@@ -33,5 +33,10 @@ RSpec.describe User, type: :model do
       @user.password = ''
       error_check("Password can't be blank")
     end
+    it 'パスワードは６文字以上じゃないと登録できない' do
+      @user.password = '111aa'
+      @user.password_confirmation = @user.password
+      error_check("Password is too short (minimum is 6 characters)")
+    end
   end
 end
