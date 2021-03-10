@@ -3,6 +3,8 @@ class CreateItems < ActiveRecord::Migration[6.0]
     create_table :items do |t|
 
       t.integer :category_id, null: false
+      t.integer :status_id, null:false
+      
 
       t.timestamps
     end
