@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
 
       t.integer :category_id, null: false
       t.integer :status_id, null:false
-      
+      t.integer :pay_id, null:false
 
       t.timestamps
     end
