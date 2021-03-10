@@ -60,5 +60,11 @@ RSpec.describe User, type: :model do
       @user.password_confirmation = @user.password
       error_check("Password is invalid")
     end
+
+    it 'パスワードが全角の場合は登録できない' do
+      @user.password = "１２３ＡＢＣ"
+      @user.password_confirmation = @user.password
+      error_check("Password is invalid")
+    end
   end
 end
