@@ -71,5 +71,10 @@ RSpec.describe User, type: :model do
       @user.last_name = ""
       error_check("Last name can't be blank")
     end
+    
+    it 'first_nameは空では登録できない' do
+      @user.first_name = ""
+      error_check("First name can't be blank")
+    end
   end
 end
