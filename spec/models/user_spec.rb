@@ -24,6 +24,8 @@ RSpec.describe User, type: :model do
         error_check("Email can't be blank")
       end
 
+      
+
       it 'メールアドレスに一意性あり' do
         user = FactoryBot.create(:user)
         @user.email = user.email
