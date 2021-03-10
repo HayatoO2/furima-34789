@@ -24,7 +24,10 @@ RSpec.describe User, type: :model do
         error_check("Email can't be blank")
       end
 
-      
+      it 'ユーザー名が未入力のとき登録できない' do
+        @user.nickname = ''
+        error_check("Nickname can't be blank")
+      end
 
       it 'メールアドレスに一意性あり' do
         user = FactoryBot.create(:user)
