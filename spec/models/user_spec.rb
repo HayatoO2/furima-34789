@@ -76,5 +76,15 @@ RSpec.describe User, type: :model do
       @user.first_name = ""
       error_check("First name can't be blank")
     end
+
+    it 'last_nameは全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
+      
+     array = ['1','３','a', 'Ａ']
+
+     array.each do |value|
+       @user.last_name += value
+       error_check('Last name is invalid')
+     end
+   end
   end
 end
