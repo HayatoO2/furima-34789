@@ -6,4 +6,5 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :pay
   belongs_to :prefecture
+  belongs_to :delivery_date
 end
