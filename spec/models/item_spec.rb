@@ -54,9 +54,13 @@ RSpec.describe Item, type: :model do
       end
       
       it '配送元の地域が未選択（id=1）だと出品できない' do
+        @item.prefecture_id = 1
+        error_check("Prefecture must be other than 1")
       end
       
       it '配送までの日数が未選択（id=1）だと出品できない' do
+        @item.delivery_date_id = 1
+        error_check('Delivery date must be other than 1')
       end
       
       it '販売価格が未入力だと出品できない' do
