@@ -69,14 +69,19 @@ RSpec.describe Item, type: :model do
       end
       
       it '販売価格が300円未満だと出品できない' do
-        @item.price = Faker::Number.within(range: 1..299)
+        @item.price = 299
         error_check("Price must be greater than or equal to 300")
       end
       
       it '販売価格が9999999円より大きいと出品できない' do
+        @item.price = 10000000
+        error_check("Price must be less than or equal to 9999999")
       end
       
       it '販売価格が全角数字だと出品できない' do
+        @item.price = @item.price.to_s.tr('0-9', '０-９')
+        error_check("Price is not a number")
+
       end
       
       it '画像がアップロードされてないと出品できない' do
