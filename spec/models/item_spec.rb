@@ -7,6 +7,12 @@ RSpec.describe Item, type: :model do
     @item = FactoryBot.build(:item)
     @item.user_id = user.id
     @item.image = fixture_file_upload('app/assets/images/flag.png')
+
+    def error_check(str)
+      @item.valid?
+      expect(@item.errors.full_messages).to include(str)
+    end
+
   end
 
 
@@ -23,6 +29,8 @@ RSpec.describe Item, type: :model do
     context '商品の出品ができない' do
 
       it '商品名が未入力だと出品できない' do
+        @item.name = ''
+        error_check("Name can't be blank")
       end
       
       it '商品説明が未入力だと出品できない' do
