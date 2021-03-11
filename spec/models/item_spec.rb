@@ -39,6 +39,8 @@ RSpec.describe Item, type: :model do
       end
       
       it 'カテゴリー情報が未選択（id=1）だと出品できない' do
+        @item.category_id = 1
+        error_check("Category must be other than 1")
       end
       
       it '商品の状態が未選択（id=1）だと出品できない' do
