@@ -44,6 +44,8 @@ RSpec.describe Item, type: :model do
       end
       
       it '商品の状態が未選択（id=1）だと出品できない' do
+        @item.status_id = 1
+        error_check("Status must be other than 1")
       end
       
       it '配送料の負担が未選択（id=1）だと出品できない' do
