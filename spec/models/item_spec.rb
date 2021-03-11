@@ -85,6 +85,8 @@ RSpec.describe Item, type: :model do
       end
       
       it '画像がアップロードされてないと出品できない' do
+        @item.image = nil
+        error_check("Image can't be blank")
       end
       
     end
