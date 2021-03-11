@@ -64,9 +64,13 @@ RSpec.describe Item, type: :model do
       end
       
       it '販売価格が未入力だと出品できない' do
+        @item.price = ''
+        error_check("Price can't be blank")
       end
       
       it '販売価格が300円未満だと出品できない' do
+        @item.price = Faker::Number.within(range: 1..299)
+        error_check("Price must be greater than or equal to 300")
       end
       
       it '販売価格が9999999円より大きいと出品できない' do
