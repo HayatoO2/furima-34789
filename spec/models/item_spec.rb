@@ -49,6 +49,8 @@ RSpec.describe Item, type: :model do
       end
       
       it '配送料の負担が未選択（id=1）だと出品できない' do
+        @item.pay_id = 1
+        error_check("Pay must be other than 1")
       end
       
       it '配送元の地域が未選択（id=1）だと出品できない' do
