@@ -34,6 +34,8 @@ RSpec.describe Item, type: :model do
       end
       
       it '商品説明が未入力だと出品できない' do
+        @item.text = ''
+        error_check("Text can't be blank")
       end
       
       it 'カテゴリー情報が未選択（id=1）だと出品できない' do
