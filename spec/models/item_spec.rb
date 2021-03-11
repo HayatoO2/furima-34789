@@ -14,15 +14,48 @@ RSpec.describe Item, type: :model do
 
     context '商品の出品がうまくいく' do
       
-      it  do
-        binding.pry
+      it  '適切な値を入力したら出品できる' do
       end
 
     end
 
     context '商品の出品ができない' do
-    end
 
+      it '商品名が未入力だと出品できない' do
+      end
+      
+      it '商品説明が未入力だと出品できない' do
+      end
+      
+      it 'カテゴリー情報が未選択だと出品できない' do
+      end
+      
+      it '商品の状態が未選択だと出品できない' do
+      end
+      
+      it '配送料の負担が未選択だと出品できない' do
+      end
+      
+      it '配送元の地域が未選択だと出品できない' do
+      end
+      
+      it '配送までの日数が未選択だと出品できない' do
+      end
+      
+      it '販売価格が未入力だと出品できない' do
+      end
+      
+      it '販売価格が300円未満だと出品できない' do
+      end
+      
+      it '販売価格が9999999円より大きいと出品できない' do
+      end
+      
+      it '販売価格が全角数字だと出品できない' do
+      end
+      
+    end
+    
   end
 
 
