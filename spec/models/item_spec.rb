@@ -80,6 +80,16 @@ RSpec.describe Item, type: :model do
         @item.image = nil
         error_check("Image can't be blank")
       end
+
+      it '販売価格が半角英数混合では出品できない' do
+        @item.price = 'abc567'
+        error_check("Price is not a number")
+      end
+
+      it '半角英語だけでは出品できない' do
+        @item.price = 'abcdef'
+        error_check("Price is not a number")
+      end
     end
   end
 end
