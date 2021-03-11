@@ -3,9 +3,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    unless user_signed_in?
-      redirect_to root_path
-    end
+    redirect_to root_path unless user_signed_in?
 
     @item = Item.new
   end
@@ -20,14 +18,10 @@ class ItemsController < ApplicationController
     end
   end
 
-
   private
 
   def item_params
-    params.require(:item).permit(:name, :text, :category_id, :status_id, :pay_id, :prefecture_id, :delivery_date_id, :price, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :category_id, :status_id, :pay_id, :prefecture_id, :delivery_date_id, :price,
+                                 :image).merge(user_id: current_user.id)
   end
-
-
-
-
 end
