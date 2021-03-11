@@ -8,6 +8,5 @@ FactoryBot.define do
     prefecture_id {Faker::Number.within(range: 2..48) }
     delivery_date_id {Faker::Number.within(range: 2..4) }
     price {Faker::Number.within(range: 300..9999999) }
-    user_id {Faker::Number.within(range: 3000..9999999)}
   end
 end
