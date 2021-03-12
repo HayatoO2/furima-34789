@@ -8,4 +8,6 @@ class Address < ApplicationRecord
     validates :house_num
     validates :buy
   end
+
+  belongs_to :buy
 end
