@@ -1,5 +1,8 @@
 function post(){
-  const price = document.getElementById('item-price')
+  const price = document.getElementById('item-price');
+
+
+  
   price.addEventListener('input',()=> {
     const tax = document.getElementById('add-tax-price');
     const profit = document.getElementById('profit');
@@ -15,7 +18,7 @@ function post(){
 
 
   });
-}
+};
 
 
 window.addEventListener('load',post);
