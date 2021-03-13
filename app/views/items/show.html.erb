@@ -27,7 +27,7 @@
 
     
 
-    <% if current_user.id == @item.user.id  %>
+    <% if current_user.id == @item.user.id  && @item.buy.blank?  %>
 
     <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
