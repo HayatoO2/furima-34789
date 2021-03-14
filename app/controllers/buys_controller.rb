@@ -5,7 +5,7 @@ class BuysController < ApplicationController
     @buy_address = BuyAddress.new
     @item = Item.find(params[:item_id])
 
-    redirect_to root_path if current_user.id == @item.user.id
+    redirect_to root_path if @item.buy.present? || current_user.id == @item.user.id
   end
 
   def create
