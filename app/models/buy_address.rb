@@ -5,7 +5,8 @@ class BuyAddress
 
   with_options presence: true do
     validates :telephone
-    validates :post_num
+    validates :post_num, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
+
     validates :city
     validates :house_num
     validates :user_id
