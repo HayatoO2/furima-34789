@@ -71,7 +71,9 @@ RSpec.describe BuyAddress, type: :model do
         @buy.user_id = nil
         error_check("User can't be blank")
       end
-      it '' do
+      it 'item_idが存在しないと購入できない' do
+        @buy.item_id = nil
+        error_check("Item can't be blank")
       end
     end
   end
