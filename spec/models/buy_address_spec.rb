@@ -14,7 +14,7 @@ RSpec.describe BuyAddress, type: :model do
     
     def error_check(str)
       @buy.valid?
-      expect(@item.errors.full_messages).to include(str)
+      expect(@buy.errors.full_messages).to include(str)
     end
   end
 
@@ -33,7 +33,9 @@ RSpec.describe BuyAddress, type: :model do
 
     context '商品購入できない' do
       it 'tokenが空だと購入できない' do
-      
+        @buy.token = nil
+        error_check("Token can't be blank")
+        
       end
       it 'post_numが未入力だと購入できない' do
       end
