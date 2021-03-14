@@ -50,6 +50,8 @@ RSpec.describe BuyAddress, type: :model do
         error_check("Prefecture must be other than 1")
       end
       it 'cityが未入力だと購入できない' do
+        @buy.city = nil
+        error_check("City can't be blank")
       end
       it 'house_numが未入力だと購入できない' do
       end
