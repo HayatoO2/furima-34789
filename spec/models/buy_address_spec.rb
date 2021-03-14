@@ -8,6 +8,8 @@ RSpec.describe BuyAddress, type: :model do
     item.image = fixture_file_upload('app/assets/images/flag.png')
     item.user_id = user.id
     item.save
+    @buy.user_id = user.id
+    @buy.item_id = item.id
     sleep 0.05 # 0.1秒待機
     
     def error_check(str)
@@ -20,6 +22,7 @@ RSpec.describe BuyAddress, type: :model do
   describe '商品購入機能' do
     context '商品購入できる' do
       it '適切な値を入力したら商品購入できる' do
+        expect(@buy).to be_valid
       end
 
       it 'buildingが未入力でも商品購入できる' do
