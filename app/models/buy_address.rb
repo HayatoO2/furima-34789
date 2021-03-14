@@ -6,7 +6,7 @@ class BuyAddress
 
 
   with_options presence: true do
-    validates :telephone, numericality: true, length: {minimum:11}
+    validates :telephone, numericality: true, length: {maximum:11}
     validates :post_num, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
 
     validates :city

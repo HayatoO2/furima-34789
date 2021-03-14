@@ -66,6 +66,8 @@ RSpec.describe BuyAddress, type: :model do
         error_check("Telephone is not a number")
       end
       it 'telephoneが12桁以上だと購入できない' do
+        @buy.telephone = '090123456789'
+        error_check("Telephone is too long (maximum is 11 characters)")
       end
     end
   end
