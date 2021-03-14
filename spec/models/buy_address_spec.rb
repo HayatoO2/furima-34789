@@ -10,7 +10,7 @@ RSpec.describe BuyAddress, type: :model do
     item.save
     @buy.user_id = user.id
     @buy.item_id = item.id
-    sleep 0.05 # 0.1秒待機
+    sleep 0.05 
     
     def error_check(str)
       @buy.valid?
@@ -26,6 +26,8 @@ RSpec.describe BuyAddress, type: :model do
       end
 
       it 'buildingが未入力でも商品購入できる' do
+        @buy.building = nil
+        expect(@buy).to be_valid
       end
     end
 
