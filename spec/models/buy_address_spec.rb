@@ -54,6 +54,8 @@ RSpec.describe BuyAddress, type: :model do
         error_check("City can't be blank")
       end
       it 'house_numが未入力だと購入できない' do
+        @buy.house_num = nil
+        error_check("House num can't be blank")
       end
       it 'telephoneが未入力だと購入できない' do
       end
