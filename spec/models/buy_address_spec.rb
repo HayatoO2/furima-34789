@@ -42,6 +42,8 @@ RSpec.describe BuyAddress, type: :model do
         error_check("Post num can't be blank")
       end
       it 'post_numが-なしだと購入できない' do
+        @buy.post_num = @buy.post_num.sub('-','')
+        error_check("Post num is invalid")
       end
       it 'prefecture_idが1だと購入できない' do
       end
