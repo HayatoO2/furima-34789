@@ -62,6 +62,8 @@ RSpec.describe BuyAddress, type: :model do
         error_check("Telephone can't be blank")
       end
       it 'telephoneが全角数字だと購入できない' do
+        @buy.telephone = '０９０１２３４５６７８'
+        error_check("Telephone is not a number")
       end
       it 'telephoneが12桁以上だと購入できない' do
       end
