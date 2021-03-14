@@ -34,6 +34,8 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
+    binding.pry
+
     
     if @item.valid?
       redirect_to root_path
