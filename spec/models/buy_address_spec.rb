@@ -58,6 +58,8 @@ RSpec.describe BuyAddress, type: :model do
         error_check("House num can't be blank")
       end
       it 'telephoneが未入力だと購入できない' do
+        @buy.telephone = nil
+        error_check("Telephone can't be blank")
       end
       it 'telephoneが全角数字だと購入できない' do
       end
