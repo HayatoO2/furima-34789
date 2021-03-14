@@ -1,11 +1,10 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!, only: :index
   before_action :item_find
+  before_action :buy_present_redirect
 
   def index
     @buy_address = BuyAddress.new
-
-    redirect_to root_path if @item.buy.present? || current_user.id == @item.user.id
   end
 
   def create
@@ -27,6 +26,10 @@ class BuysController < ApplicationController
     params.require(:buy_address).permit(:telephone, :post_num, :prefecture_id, :city, :house_num, :building).merge(
       user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )
+  end
+
+  def buy_present_redirect
+    redirect_to root_path if @item.buy.present? || current_user.id == @item.user.id
   end
 
   def item_find
