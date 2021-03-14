@@ -38,6 +38,8 @@ RSpec.describe BuyAddress, type: :model do
         
       end
       it 'post_numが未入力だと購入できない' do
+        @buy.post_num = nil
+        error_check("Post num can't be blank")
       end
       it 'post_numが-なしだと購入できない' do
       end
