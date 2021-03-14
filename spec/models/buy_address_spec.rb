@@ -67,6 +67,12 @@ RSpec.describe BuyAddress, type: :model do
         @buy.telephone = '090123456789'
         error_check('Telephone is too long (maximum is 11 characters)')
       end
+      it 'user_idがないと購入できない' do
+        @buy.user_id = nil
+        error_check("User can't be blank")
+      end
+      it '' do
+      end
     end
   end
 end
