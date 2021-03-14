@@ -20,31 +20,30 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    item_find
   end
 
   def edit
-    @item = Item.find(params[:id])
-    if current_user.id != @item.user.id || @item.buy.present?
-
-      redirect_to root_path
-    end
+    item_find
+    redirect_to root_path if current_user.id != @item.user.id || @item.buy.present?
   end
 
   def update
-    @item = Item.find(params[:id])
+    item_find
     @item.update(item_params)
 
-    
     if @item.valid?
       redirect_to root_path
     else
       render :edit
     end
-
   end
 
   private
+
+  def item_find
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :text, :category_id, :status_id, :pay_id, :prefecture_id, :delivery_date_id, :price,
