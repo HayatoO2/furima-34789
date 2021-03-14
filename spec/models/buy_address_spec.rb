@@ -46,6 +46,8 @@ RSpec.describe BuyAddress, type: :model do
         error_check("Post num is invalid")
       end
       it 'prefecture_idが1だと購入できない' do
+        @buy.prefecture_id = 1
+        error_check("Prefecture must be other than 1")
       end
       it 'cityが未入力だと購入できない' do
       end
