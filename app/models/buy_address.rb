@@ -3,6 +3,8 @@ class BuyAddress
 
   attr_accessor :user_id, :item_id, :telephone, :post_num, :prefecture_id, :city, :house_num, :building, :buy_id, :token
 
+
+
   with_options presence: true do
     validates :telephone, numericality: true, length: {minimum:11}
     validates :post_num, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
@@ -13,6 +15,7 @@ class BuyAddress
     validates :item_id
     validates :token
   end
+
 
   validates :prefecture_id, numericality: {other_than: 1}
 
