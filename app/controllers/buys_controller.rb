@@ -4,14 +4,13 @@ class BuysController < ApplicationController
 
   def index
     @buy_address = BuyAddress.new
-    
 
     redirect_to root_path if @item.buy.present? || current_user.id == @item.user.id
   end
 
   def create
     @buy_address = BuyAddress.new(buy_address_params)
-    
+
     if @buy_address.valid?
 
       pay_item
